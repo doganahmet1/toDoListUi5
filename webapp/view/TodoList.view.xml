@@ -1,0 +1,58 @@
+<mvc:View controllerName="todolistZHCM_UX_TODO_ODEV.controller.TodoList" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<!--<List noDataText="No tasks for now." id="listTodo" inset="true" mode="Delete" delete="onDeleteItem"/>-->
+					<Table noDataText="{i18n>No_Todo}" id="listTodo" items="{todoListModel>/TodoList}">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="{i18n>To_Do_Item}"/>
+								<ToolbarSpacer/>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column>
+								<Text text="ID"></Text>
+							</Column>
+							<Column>
+								<Text text="{i18n>To_Do_Item}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>TodoDate}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>CompletionDate}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>Done_Status}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>Delete}"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{path:'todoListModel>Id'}"/>
+									<Text text="{path:'todoListModel>Todo'}"/>
+									<Text text="{path:'todoListModel>TodoDate',type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true,  pattern: 'yyyy-MM-ddTHH:mm:ss'}}"/>
+									<Text text="{path:'todoListModel>CompletionDate',type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true,  pattern: 'yyyy-MM-ddTHH:mm:ss'}}" />
+									<Button text="{i18n>Done}" type="Accept" press="onDone"></Button>
+									<Button text="Delete" type="Reject" press="onDelete"></Button>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+				<footer>
+					<Toolbar width="100%" id="toolbarFooter">
+						<ToolbarSpacer></ToolbarSpacer>
+						<Button text="Ekle" type="Accept" id="buttonAddTask" press="onPressAddTask"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
